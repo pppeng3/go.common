@@ -25,9 +25,9 @@ func (auth *loginAuth) Start(server *smtp.ServerInfo) (string, []byte, error) {
 func (auth *loginAuth) Next(fromServer []byte, more bool) ([]byte, error) {
 	if more {
 		switch string(fromServer) {
-		case "Username":
+		case "Username:":
 			return []byte(auth.username), nil
-		case "Password":
+		case "Password:":
 			return []byte(auth.password), nil
 		default:
 			return nil, errors.New("Unknown fromServer")

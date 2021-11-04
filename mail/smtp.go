@@ -58,6 +58,7 @@ func (s *SMTPWriter) getPlainAuth() smtp.Auth {
 
 func (s *SMTPWriter) sendMail(auth smtp.Auth, msgContent []byte) error {
 	client, err := smtp.Dial(s.Host)
+
 	if err != nil {
 		return err
 	}

@@ -29,3 +29,21 @@ func TestCreateMessage(t *testing.T) {
 		t.Fatalf("Err:%v", err)
 	}
 }
+
+func TestWriteText(t *testing.T) {
+	mail := []string{"549822881@qq.com"}
+	st := NewSMTPWriter("549822881@qq.com", "notpvncntywpbdbj", "smtp.qq.com:587", "LOGIN", "549822881@qq.com", mail)
+	err := st.WriteMail("subject", []byte("msg"), "text")
+	if err != nil {
+		t.Fatalf("error: %v", err)
+	}
+}
+
+func TestWriteStream(t *testing.T) {
+	mail := []string{"549822881@qq.com"}
+	st := NewSMTPWriter("549822881@qq.com", "notpvncntywpbdbj", "smtp.qq.com:587", "LOGIN", "549822881@qq.com", mail)
+	err := st.WriteMail("stream", []byte("./a.log"), "stream")
+	if err != nil {
+		t.Fatalf("error: %v", err)
+	}
+}
